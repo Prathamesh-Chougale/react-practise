@@ -1,0 +1,9 @@
+//command to create a new vite project:
+npm create vite@latest
+
+Message.tsx is created in the src folder
+and exported to App.tsx
+
+<Message /> passed to App.tsx for rendering Message.tsx to the DOM or App.tsx
+
+we can return if else statement in the Message.tsx
