@@ -1,9 +1,13 @@
-import Message from "./Message";
+import ListGroup from "./components/ListGroup";
 
 function App() {
+  const items = ["delhi", "mumbai", "chennai", "kolkata"];
   return (
     <div>
-      <Message />{/* This is the component we created in the previous step.*/}
+      <ListGroup items={items} heading="cities" />
+      {/* This is the component we created in the previous step.*/}
+      {/* <ListGroup /> */}
+      {/* This is the component we created in the previous step.*/}
     </div>
   );
 }

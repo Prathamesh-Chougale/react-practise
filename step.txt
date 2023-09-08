@@ -5,5 +5,24 @@ Message.tsx is created in the src folder
 and exported to App.tsx
 
 <Message /> passed to App.tsx for rendering Message.tsx to the DOM or App.tsx
-
 we can return if else statement in the Message.tsx
+
+installing a frame work bootstrap
+npm i bootstrap@latest
+then deleted the inbuild css files
+then import bootstrap in the main.tsx
+
+import 'bootstrap/dist/css/bootstrap.css';
+then we can use bootstrap in the main.tsx
+
+to dynamically change the name in tsx we use {item.map((item,index)=><li ClassName = "whatever in bootstrap" key = {index}>{item}</li>)}
+
+we can write a statement or a function to ease the conditional problem and pass it from const or functionName()
+or we can pass any logical statement at where we want to handle expection or error
+
+we can use the useState() to change the state of the variable and use the setVariable() to change the state of the variable
+we can use the useEffect() to change the state of the variable and use the setVariable() to change the state of the variable
+
+to check independence we can double the instance of ListGroup in the App.tsx.
+
+
