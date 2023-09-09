@@ -10,7 +10,7 @@ we can return if else statement in the Message.tsx
 installing a frame work bootstrap
 npm i bootstrap@latest
 then deleted the inbuild css files
-then import bootstrap in the main.tsx
+then import bootstrap in the m ain.tsx
 
 import 'bootstrap/dist/css/bootstrap.css';
 then we can use bootstrap in the main.tsx
