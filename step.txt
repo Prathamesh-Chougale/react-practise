@@ -26,3 +26,24 @@ we can use the useEffect() to change the state of the variable and use the setVa
 to check independence we can double the instance of ListGroup in the App.tsx.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+react hook form
+command: npm i react-hook-form@latest
+
