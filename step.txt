@@ -46,4 +46,26 @@ to check independence we can double the instance of ListGroup in the App.tsx.
 
 react hook form
 command: npm i react-hook-form@latest
+//import {useForm} from 'react-hook-form';
+//const {register,handleSubmit,formState:{errors}} = useForm();
+
+
+
+
+
+
+
+
+
+
+
+install zod for validation
+command: npm i zod@latest
+
+
+install @hookform/resolvers/zod for validation
+command: npm i @hookform/resolvers@latest
+
+import {zodResolver} from '@hookform/resolvers/zod';
+
 
