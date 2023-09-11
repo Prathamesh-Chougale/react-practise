@@ -66,9 +66,28 @@ function Forms() {
           <option value="Entertainment">Entertainment</option>
         </select>
       </div>
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
+      <div className="mb-3">
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </div>
+      <div className="mb-3">
+        <label htmlFor="Categories" className="form-label">
+          Select Categories
+        </label>
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          id="Categories"
+        >
+          <option selected value="All">
+            All Categories
+          </option>
+          <option value="Groceries">Groceries</option>
+          <option value="Utility">Utility</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
+      </div>
     </form>
   );
 }
