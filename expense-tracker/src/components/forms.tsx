@@ -5,14 +5,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z.object({
-  description: z
-    .string({ invalid_type_error: "Name is required" })
-    .min(3, { message: "Name should be greater than 3" })
-    .max(10, { message: "Name should be less than 10" }),
-  amount: z
-    .number({ invalid_type_error: "Number is required" })
-    .min(18, { message: "Age should be greater than 18" })
-    .max(60),
+  description: z.string({ invalid_type_error: "Name is required" }),
+  amount: z.number({ invalid_type_error: "Number is required" }),
+  Categories: z.string({ invalid_type_error: "Category is required" }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -55,6 +50,21 @@ function Forms() {
         {errors.amount && (
           <p className="text-danger">{errors.amount.message}</p>
         )}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="Categories" className="form-label">
+          Categories
+        </label>
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          id="Categories"
+          {...register("Categories")}
+        >
+          <option value="Groceries">Groceries</option>
+          <option value="Utility">Utility</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
