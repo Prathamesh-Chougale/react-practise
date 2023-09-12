@@ -25,12 +25,18 @@ interface Props {
 const ExpenseDisplay = ({ onAddExpense }: Props) => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<ExpenseFormData>({ resolver: zodResolver(schema) });
 
   return (
-    <form onSubmit={handleSubmit(onAddExpense)}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        onAddExpense(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description

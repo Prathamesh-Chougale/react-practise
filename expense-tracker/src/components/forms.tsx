@@ -15,12 +15,18 @@ type FormData = z.infer<typeof schema>;
 function Forms() {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors }, //
   } = useForm<FormData>({ resolver: zodResolver(schema) });
   const onSubmit = (data: FormData) => console.log(data);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description

@@ -13,6 +13,8 @@ interface Props {
 }
 
 const ExpenseList = ({ expenses, onDelete }: Props) => {
+  if (expenses.length === 0) return <p>No expenses found</p>;
+
   return (
     <table className="table table-bordered">
       <thead>

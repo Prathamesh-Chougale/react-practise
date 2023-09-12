@@ -42,7 +42,7 @@ function App() {
       <div className="mb-3">
         <ExpenseList
           expenses={visibleExpenses}
-          onDelete={(id) => console.log("Deleted", id)}
+          onDelete={(id) => setExprenses(exprenses.filter((e) => e.id !== id))}
         />
       </div>
     </div>
