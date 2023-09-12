@@ -3,7 +3,7 @@ import ExpenseList from "./components/ExpenseList";
 import ExpenseFilter from "./components/ExpenseFilter";
 import ExpenseDisplay from "./components/ExpenseDisplay";
 import { useState } from "react";
-import categories from "./components/categories";
+// import categories from "./components/categories";
 
 function App() {
   const [category, setCategory] = useState(""); // ["All", "Groceries", "Utilities", "Entertainment"
@@ -25,7 +25,11 @@ function App() {
           onAddExpense={(expense) =>
             setExprenses([
               ...exprenses,
-              { ...expense, id: exprenses.length + 1 },
+              {
+                ...expense,
+                id: exprenses.length + 1,
+                Categories: expense.categories as string, // as string is a type assertion
+              },
             ])
           }
         />
