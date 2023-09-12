@@ -1,7 +1,7 @@
 // import React from 'react'
 
 interface ExpenseItem {
-  id: string;
+  id: number;
   description: string;
   amount: number;
   Categories: string;
@@ -9,7 +9,7 @@ interface ExpenseItem {
 
 interface Props {
   expenses: ExpenseItem[];
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 }
 
 const ExpenseList = ({ expenses, onDelete }: Props) => {
