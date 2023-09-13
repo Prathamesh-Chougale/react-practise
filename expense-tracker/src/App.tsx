@@ -9,9 +9,6 @@ function App() {
   const [category, setCategory] = useState(""); // ["All", "Groceries", "Utilities", "Entertainment"
   const [exprenses, setExprenses] = useState([
     { id: 1, description: "aaaaa", amount: 100, Categories: "Groceries" },
-    { id: 2, description: "bbbb", amount: 100, Categories: "Groceries" },
-    { id: 3, description: "cccc", amount: 100, Categories: "Groceries" },
-    { id: 4, description: "dddd", amount: 100, Categories: "Groceries" },
   ]);
 
   const visibleExpenses = category
