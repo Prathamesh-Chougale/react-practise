@@ -19,7 +19,7 @@ function App() {
   // const ref = useRef<HTMLInputElement>(null);
 
   // const [categories, setCategories] = useState("");
-  const [user, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -60,18 +60,35 @@ function App() {
     document.title = "Prathamesh";
   }, []);
 
+  const deleteUser = (user: User) => {
+    const OriginalUser = [...users];
+    setUsers(users.filter((u) => u.id !== user.id));
+
+    axios
+      .delete("https://jsonplaceholder.typicode.com/users" + user.id)
+      .catch((err) => {
+        setError(err.message);
+        setUsers(OriginalUser);
+      });
+  };
+
   return (
     <>
       {error && <p className="text-danger">{error}</p>}
       {isLoading && <div className="spinner-border"></div>}
       <ul className="list-group">
-        {user.map((user) => (
+        {users.map((user) => (
           <li
             key={user.id}
             className="list-group-item  d-flex justify-content-between"
           >
             {user.name}{" "}
-            <button className="btn btn-outline-danger">Delete</button>
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => deleteUser(user)}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
