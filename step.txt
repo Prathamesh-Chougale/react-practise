@@ -69,3 +69,6 @@ command: npm i @hookform/resolvers@latest
 import {zodResolver} from '@hookform/resolvers/zod';
 
 
+axios
+command: npm i axios@latest
+info: axios is used to fetch data from the server
