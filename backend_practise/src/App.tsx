@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 // import ExpenseList from "./components/ExpenseList";
-import axios, { CanceledError } from "axios";
+import apiClient, { CanceledError } from "./services/api-client";
 
 // const connect = () => {
 //   console.log("connect");
@@ -37,7 +37,7 @@ function App() {
 
     setIsLoading(true);
 
-    axios
+    apiClient
       .get<User[]>("https://jsonplaceholder.typicode.com/users", {
         signal: controller.signal,
       })
@@ -64,7 +64,7 @@ function App() {
     const OriginalUser = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    axios
+    apiClient
       .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
       .catch((err) => {
         setError(err.message);
@@ -77,7 +77,7 @@ function App() {
     const user: User = { id: users.length + 1, name: "Prathamesh" };
     setUsers([...users, user]);
 
-    axios
+    apiClient
       .post("https://jsonplaceholder.typicode.com/users", user)
       .then((res) => {
         {
@@ -86,6 +86,17 @@ function App() {
         }
       })
       .catch((err) => setError(err.message));
+  };
+
+  const updateUser = (user: User) => {
+    const OriginalUser = [...users];
+    const updatedUser = { ...user, name: user.name + "!" };
+    setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
+
+    apiClient.patch("/users/" + user.id, updatedUser).catch((err) => {
+      setError(err.message);
+      setUsers(OriginalUser);
+    });
   };
 
   return (
@@ -101,13 +112,21 @@ function App() {
             key={user.id}
             className="list-group-item  d-flex justify-content-between"
           >
-            {user.name}{" "}
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => deleteUser(user)}
-            >
-              Delete
-            </button>
+            {user.name}
+            <div>
+              <button
+                className="btn btn-outline-secondary mx-1"
+                onClick={() => updateUser(user)}
+              >
+                Update
+              </button>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => deleteUser(user)}
+              >
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
