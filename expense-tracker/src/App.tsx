@@ -5,11 +5,16 @@ import ExpenseDisplay from "./components/ExpenseDisplay";
 import { useState } from "react";
 // import categories from "./components/categories";
 
+interface categorie {
+  id: number;
+  description: string;
+  amount: number;
+  Categories: "Groceries" | "Utilities" | "Entertainment";
+}
+
 function App() {
   const [category, setCategory] = useState(""); // ["All", "Groceries", "Utilities", "Entertainment"
-  const [exprenses, setExprenses] = useState([
-    { id: 1, description: "aaaaa", amount: 100, Categories: "Groceries" },
-  ]);
+  const [exprenses, setExprenses] = useState<categorie[]>([]);
 
   const visibleExpenses = category
     ? exprenses.filter((e) => e.Categories === category)
@@ -25,16 +30,14 @@ function App() {
               {
                 ...expense,
                 id: exprenses.length + 1,
-                Categories: expense.categories as string, // as string is a type assertion
+                Categories: expense.categories,
               },
             ])
           }
         />
       </div>
       <div className="mb-3">
-        <ExpenseFilter
-          onSelectedCategory={(category) => setCategory(category)}
-        />
+        <ExpenseFilter onSelectedCategory={(c) => setCategory(c)} />
       </div>
       <div className="mb-3">
         <ExpenseList

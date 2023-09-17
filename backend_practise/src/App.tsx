@@ -65,17 +65,36 @@ function App() {
     setUsers(users.filter((u) => u.id !== user.id));
 
     axios
-      .delete("https://jsonplaceholder.typicode.com/users" + user.id)
+      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
       .catch((err) => {
         setError(err.message);
         setUsers(OriginalUser);
       });
   };
 
+  const addUser = () => {
+    const OriginalUser = [...users];
+    const user: User = { id: users.length + 1, name: "Prathamesh" };
+    setUsers([...users, user]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", user)
+      .then((res) => {
+        {
+          setUsers([...users, res.data]);
+          setUsers(OriginalUser);
+        }
+      })
+      .catch((err) => setError(err.message));
+  };
+
   return (
     <>
       {error && <p className="text-danger">{error}</p>}
       {isLoading && <div className="spinner-border"></div>}
+      <button className="btn btn-primary mb3" onClick={addUser}>
+        ADD
+      </button>
       <ul className="list-group">
         {users.map((user) => (
           <li
