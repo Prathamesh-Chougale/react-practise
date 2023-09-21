@@ -71,6 +71,7 @@ function App() {
       .then((res) => {
         {
           setUsers([...users, res.data]);
+          console.log(users.length);
         }
       })
       .catch((err) => {
