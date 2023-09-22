@@ -1,12 +1,13 @@
 // import React from "react";
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/code-gif.gif";
+import ColorModeSwitch from "./colorModeSwitch";
 
 const navbar = () => {
   return (
-    <HStack>
+    <HStack justifyContent="space-between">
       <Image src={logo} boxSize="60px"></Image>
-      <Text>Navbar</Text>
+      <ColorModeSwitch />
     </HStack>
   );
 };
