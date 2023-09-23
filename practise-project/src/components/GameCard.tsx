@@ -9,7 +9,7 @@ interface Prop {
 
 const GameCard = ({ game }: Prop) => {
   return (
-    <Card height="291px">
+    <Card>
       <Image src={CroppedImage(game.background_image)} />
       <CardBody>
         <Heading fontSize="xl">{game.name}</Heading>
