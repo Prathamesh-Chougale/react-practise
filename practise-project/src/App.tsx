@@ -1,4 +1,3 @@
-// import React from 'react'
 import GameGrid from "./components/GameGrid.tsx";
 import GenreList from "./components/GenreList.tsx";
 import Navbar from "./components/Navbar.tsx";
