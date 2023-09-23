@@ -12,7 +12,9 @@ export interface Game {
     id: number;
     name: string;
     background_image: string;
-    parent_platforms: { platform: Platform }[];//array of objects with platform property#lecture 12 for showing icons
+    parent_platforms: { platform: Platform }[];
+    //array of objects with platform property#lecture 12 for showing icons
+    metacritic: number;
 }
 
 export interface fetchGames {
