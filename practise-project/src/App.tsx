@@ -7,11 +7,13 @@ import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector.tsx";
 import { Platform } from "./hooks/useGames.ts";
 import SortSelector from "./components/SortSelector.tsx";
+import GameHeading from "./components/GameHeading.tsx";
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 const App = () => {
@@ -31,7 +33,11 @@ const App = () => {
         }}
       >
         <GridItem gridArea="nav">
-          <Navbar />
+          <Navbar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </GridItem>
         <Show above="lg">
           <GridItem gridArea="aside" paddingX={5}>
@@ -42,6 +48,7 @@ const App = () => {
           </GridItem>
         </Show>
         <GridItem gridArea="main">
+          <GameHeading gameQuery={gameQuery} />
           <HStack paddingLeft={5}>
             <PlatformSelector
               selectedPlatform={gameQuery.platform}
