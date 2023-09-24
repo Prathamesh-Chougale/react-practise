@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.tsx";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import { Genre } from "./hooks/useGenre.ts";
 import { useState } from "react";
+import PlatformSelector from "./components/PlatformSelector.tsx";
 
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); //compilation error due to Genre
@@ -24,10 +25,14 @@ const App = () => {
         </GridItem>
         <Show above="lg">
           <GridItem gridArea="aside" paddingX={5}>
-            <GenreList onSelectGenre={(g) => setSelectedGenre(g)} />
+            <GenreList
+              selectedGenre={selectedGenre}
+              onSelectGenre={(g) => setSelectedGenre(g)}
+            />
           </GridItem>
         </Show>
         <GridItem gridArea="main">
+          <PlatformSelector />
           <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
