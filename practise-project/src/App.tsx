@@ -5,9 +5,14 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import { Genre } from "./hooks/useGenre.ts";
 import { useState } from "react";
 import PlatformSelector from "./components/PlatformSelector.tsx";
+import { Platform } from "./hooks/useGames.ts";
 
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null); //compilation error due to Genre
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  ); //compilation error due to Genre
+
   return (
     <>
       <Grid
@@ -32,8 +37,14 @@ const App = () => {
           </GridItem>
         </Show>
         <GridItem gridArea="main">
-          <PlatformSelector />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={(p) => setSelectedPlatform(p)}
+          />
+          <GameGrid
+            selectedPlatform={selectedPlatform}
+            selectedGenre={selectedGenre}
+          />
         </GridItem>
       </Grid>
     </>
