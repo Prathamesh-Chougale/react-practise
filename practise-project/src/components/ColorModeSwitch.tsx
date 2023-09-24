@@ -9,6 +9,7 @@ const ColorModeSwitch = () => {
         colorScheme="green"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
+        //we can use whitespace = "nowrap" to prevent the text from wrapping
       />
     </HStack>
   );
