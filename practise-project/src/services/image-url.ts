@@ -1,5 +1,6 @@
+import NoImage from './noImage.jpg'
 const CroppedImage = (image: string) => {
-    if (!image) return '';
+    if (!image) return NoImage;
 
     return image.replace("/media/", "/media/crop/600/400/");
 };
