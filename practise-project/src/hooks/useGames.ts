@@ -14,6 +14,7 @@ export interface Game {
     parent_platforms: { platform: Platform }[];
     //array of objects with platform property#lecture 12 for showing icons
     metacritic: number;
+    rating_top: number;
 }
 
 const useGames = (gameQuery: GameQuery) => useData<Game>('/games',
